@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mustafa Gamal | Mobile Developer</title>
+    <title>Mustafa Gamal | Mid Level Mobile Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-1: #050b1b;
-            --bg-2: #091734;
-            --surface: rgba(10, 20, 42, 0.78);
-            --surface-strong: rgba(14, 28, 58, 0.92);
-            --line: rgba(124, 170, 255, 0.26);
-            --text: #e6f0ff;
-            --muted: #a9bcde;
-            --primary: #66d1ff;
-            --secondary: #5af2cf;
-            --accent: #8ea2ff;
-            --shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+            --bg-0: #060713;
+            --bg-1: #090d20;
+            --bg-2: #101737;
+            --surface: rgba(12, 16, 38, 0.84);
+            --surface-strong: rgba(16, 22, 49, 0.94);
+            --line: rgba(167, 145, 255, 0.28);
+            --text: #ebedff;
+            --muted: #aeb3d8;
+            --primary: #9a7bff;
+            --secondary: #7dd1ff;
+            --accent: #b9a9ff;
+            --mint: #87f3e3;
+            --shadow: 0 20px 65px rgba(0, 0, 0, 0.48);
             --radius-lg: 24px;
             --radius-md: 16px;
         }
@@ -36,28 +38,29 @@
             margin: 0;
             font-family: "Sora", sans-serif;
             color: var(--text);
-            background:
-                radial-gradient(1200px 700px at 6% -10%, rgba(91, 196, 255, 0.25) 0%, rgba(91, 196, 255, 0) 65%),
-                radial-gradient(1000px 700px at 95% 10%, rgba(85, 242, 203, 0.20) 0%, rgba(85, 242, 203, 0) 70%),
-                linear-gradient(165deg, var(--bg-1) 0%, var(--bg-2) 55%, #040916 100%);
             min-height: 100vh;
+            background:
+                radial-gradient(900px 600px at 10% -5%, rgba(165, 122, 255, 0.32), rgba(165, 122, 255, 0) 68%),
+                radial-gradient(860px 620px at 90% 12%, rgba(108, 142, 255, 0.26), rgba(108, 142, 255, 0) 70%),
+                linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 45%, var(--bg-2) 100%);
+            overflow-x: hidden;
         }
 
         .page-glow {
             position: fixed;
             inset: 0;
-            pointer-events: none;
             z-index: -1;
+            pointer-events: none;
             background:
-                radial-gradient(500px 320px at 30% 25%, rgba(102, 209, 255, 0.18), transparent 70%),
-                radial-gradient(480px 280px at 80% 82%, rgba(142, 162, 255, 0.16), transparent 75%);
-            animation: glow-drift 11s ease-in-out infinite alternate;
+                radial-gradient(430px 260px at 24% 23%, rgba(169, 127, 255, 0.16), transparent 75%),
+                radial-gradient(420px 250px at 80% 84%, rgba(113, 207, 255, 0.14), transparent 76%);
+            animation: drift 10s ease-in-out infinite alternate;
         }
 
         .container {
             width: min(1120px, 92vw);
             margin: 0 auto;
-            padding-bottom: 48px;
+            padding: 0 0 44px;
         }
 
         .nav {
@@ -65,163 +68,254 @@
             padding: 16px 22px;
             border: 1px solid var(--line);
             border-radius: 999px;
-            background: rgba(4, 10, 22, 0.68);
-            backdrop-filter: blur(8px);
+            background: rgba(7, 10, 24, 0.72);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
             position: sticky;
             top: 16px;
-            z-index: 50;
+            z-index: 30;
         }
 
         .brand {
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 0.4px;
-            color: #d9f7ff;
-            font-size: 14px;
+            color: #f4f5ff;
         }
 
         .nav-links {
             display: flex;
-            align-items: center;
             gap: 16px;
             flex-wrap: wrap;
         }
 
         .nav-links a {
+            position: relative;
             color: var(--muted);
             text-decoration: none;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 180ms ease;
         }
 
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 1.5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 220ms ease;
+        }
+
         .nav-links a:hover {
-            color: var(--primary);
+            color: #d9ddff;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
         }
 
         .hero {
             margin-top: 26px;
-            border: 1px solid var(--line);
             border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
             box-shadow: var(--shadow);
-            background: linear-gradient(160deg, rgba(7, 15, 33, 0.95), rgba(9, 23, 49, 0.90));
             overflow: hidden;
+            position: relative;
+            background: linear-gradient(155deg, rgba(7, 11, 30, 0.96), rgba(14, 20, 46, 0.94));
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -20% -10% auto;
+            height: 140%;
+            background:
+                radial-gradient(420px 260px at 14% 18%, rgba(165, 122, 255, 0.26), transparent 72%),
+                radial-gradient(360px 260px at 90% 36%, rgba(112, 198, 255, 0.20), transparent 70%);
+            animation: pulse-lights 8.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .hero-motion {
+            transform-style: preserve-3d;
+            transition: transform 220ms ease;
+            background:
+                radial-gradient(700px circle at var(--mx, 50%) var(--my, 40%), rgba(255, 255, 255, 0.06), transparent 55%);
         }
 
         .hero-grid {
+            position: relative;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 34px;
+            grid-template-columns: 1fr 1.08fr 1fr;
+            gap: 12px;
             align-items: center;
-            padding: 48px clamp(20px, 4.5vw, 52px);
+            padding: 44px clamp(18px, 3.5vw, 44px);
         }
 
-        .hero-kicker {
-            margin: 0 0 12px;
-            color: var(--secondary);
-            font-size: 13px;
-            letter-spacing: 1.6px;
-            text-transform: uppercase;
-            font-weight: 600;
+        .hero-side {
+            position: relative;
+            z-index: 2;
         }
 
-        .hero h1 {
+        .hero-small {
             margin: 0;
-            font-size: clamp(2rem, 5vw, 3.4rem);
-            line-height: 1.08;
+            color: #bcb6ff;
+            font-size: 14px;
+            letter-spacing: 0.5px;
         }
 
-        .hero h1 .gradient-word {
-            background: linear-gradient(90deg, var(--primary), var(--accent) 70%);
+        .hero-left h1 {
+            margin: 8px 0 8px;
+            font-size: clamp(2rem, 4.4vw, 3.2rem);
+            line-height: 1;
+        }
+
+        .hero-left h1 span {
+            background: linear-gradient(90deg, #f2f3ff, var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .hero p {
-            margin-top: 16px;
+        .hero-kicker {
+            margin: 0;
+            color: var(--mint);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .hero-right h2 {
+            margin: 8px 0 10px;
+            line-height: 1.02;
+            font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+            font-weight: 800;
+        }
+
+        .hero-right h2 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text {
+            margin: 0;
+            max-width: 320px;
+            font-size: 13px;
+            line-height: 1.8;
             color: var(--muted);
-            max-width: 560px;
-            line-height: 1.75;
         }
 
         .hero-actions {
+            margin-top: 16px;
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 22px;
+            gap: 10px;
         }
 
         .btn {
             border: 1px solid transparent;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             border-radius: 999px;
-            padding: 11px 16px;
-            transition: transform 180ms ease, filter 180ms ease, border-color 180ms ease;
+            padding: 10px 14px;
+            transition: transform 180ms ease, border-color 180ms ease, filter 180ms ease;
         }
 
         .btn:hover {
             transform: translateY(-2px);
+            filter: brightness(1.05);
         }
 
         .btn-primary {
-            background: linear-gradient(120deg, var(--primary), #74a7ff);
-            color: #041021;
+            background: linear-gradient(120deg, var(--primary), #6aa8ff);
+            color: #0d0f26;
         }
 
         .btn-secondary {
             border-color: var(--line);
-            color: #d2e7ff;
-            background: rgba(9, 22, 45, 0.7);
+            color: #e2e5ff;
+            background: rgba(16, 21, 48, 0.72);
         }
 
         .hero-contact {
-            margin-top: 20px;
+            margin-top: 14px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            font-size: 14px;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 13px;
         }
 
         .hero-contact a {
-            color: #bfe7ff;
+            color: #c7dcff;
             text-decoration: none;
+            transition: color 180ms ease;
         }
 
         .hero-contact a:hover {
-            color: var(--secondary);
+            color: var(--mint);
         }
 
         .hero-photo-wrap {
-            display: grid;
-            place-items: center;
             position: relative;
             min-height: 330px;
+            display: grid;
+            place-items: end center;
+            isolation: isolate;
         }
 
         .hero-photo-wrap::before {
             content: "";
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 310px;
+            height: 310px;
             border-radius: 50%;
-            background: radial-gradient(circle at center, rgba(102, 209, 255, 0.46) 0%, rgba(102, 209, 255, 0.03) 70%);
+            background: radial-gradient(circle at center, rgba(154, 123, 255, 0.60), rgba(154, 123, 255, 0.04) 74%);
             filter: blur(4px);
-            animation: pulse 3.8s ease-in-out infinite;
+            animation: pulse 3.6s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        .hero-photo-wrap::after {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            border: 1px dashed rgba(162, 173, 255, 0.38);
+            animation: spin 16s linear infinite;
+            z-index: -1;
         }
 
         .hero-photo {
-            width: min(320px, 88%);
-            border-radius: 18px;
-            border: 1px solid rgba(190, 220, 255, 0.32);
-            object-fit: cover;
-            box-shadow: 0 22px 42px rgba(0, 0, 0, 0.42);
-            animation: float 5.6s ease-in-out infinite;
+            width: min(370px, 95%);
+            object-fit: contain;
+            filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.45));
+            animation: bob 5.2s ease-in-out infinite;
+        }
+
+        .photo-floor {
+            position: absolute;
+            left: 18%;
+            right: 18%;
+            bottom: 12px;
+            height: 36px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(143, 165, 255, 0.50), rgba(143, 165, 255, 0) 72%);
+            filter: blur(6px);
+            z-index: -3;
+            animation: floor-wave 3.8s ease-in-out infinite;
         }
 
         .section {
@@ -245,19 +339,13 @@
             color: transparent;
         }
 
-        .section p {
-            margin: 0;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-
         .experience-grid {
             display: grid;
             gap: 14px;
         }
 
         .experience-card {
-            border: 1px solid rgba(124, 170, 255, 0.23);
+            border: 1px solid rgba(151, 153, 255, 0.23);
             border-radius: var(--radius-md);
             padding: 16px 18px;
             background: var(--surface-strong);
@@ -276,7 +364,7 @@
         }
 
         .experience-card ul {
-            margin: 12px 0 0 0;
+            margin: 12px 0 0;
             padding-left: 18px;
             color: #c4d7f4;
             line-height: 1.7;
@@ -291,9 +379,19 @@
 
         .code-card {
             border-radius: var(--radius-md);
-            border: 1px solid rgba(109, 170, 255, 0.24);
-            background: #081327;
+            border: 1px solid rgba(144, 147, 255, 0.24);
+            background: #0a1025;
             overflow: hidden;
+            position: relative;
+        }
+
+        .code-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 3px);
+            opacity: 0.2;
+            pointer-events: none;
         }
 
         .code-head {
@@ -302,8 +400,8 @@
             align-items: center;
             gap: 8px;
             padding: 0 12px;
-            background: rgba(15, 29, 57, 0.9);
-            border-bottom: 1px solid rgba(123, 172, 255, 0.2);
+            background: rgba(18, 26, 59, 0.92);
+            border-bottom: 1px solid rgba(141, 145, 255, 0.2);
         }
 
         .dot {
@@ -312,7 +410,7 @@
             border-radius: 50%;
         }
 
-        .dot.red { background: #ff6d6d; }
+        .dot.red { background: #ff7272; }
         .dot.yellow { background: #f7d06d; }
         .dot.green { background: #5be09b; }
 
@@ -333,7 +431,7 @@
 
         .skills-chips {
             border-radius: var(--radius-md);
-            border: 1px solid rgba(109, 170, 255, 0.24);
+            border: 1px solid rgba(144, 147, 255, 0.24);
             background: var(--surface-strong);
             padding: 16px;
             display: flex;
@@ -347,9 +445,9 @@
             font-weight: 600;
             padding: 8px 10px;
             border-radius: 999px;
-            background: rgba(70, 130, 219, 0.22);
+            background: rgba(110, 120, 255, 0.22);
             color: #d8e9ff;
-            border: 1px solid rgba(136, 178, 255, 0.35);
+            border: 1px solid rgba(153, 160, 255, 0.35);
         }
 
         .projects-grid {
@@ -361,14 +459,32 @@
         .project-card {
             border-radius: var(--radius-md);
             overflow: hidden;
-            border: 1px solid rgba(122, 168, 250, 0.26);
+            border: 1px solid rgba(144, 147, 255, 0.26);
             background: var(--surface-strong);
-            transition: transform 220ms ease, border-color 220ms ease;
+            transition: transform 240ms ease, border-color 240ms ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: -180%;
+            left: -30%;
+            width: 60%;
+            height: 360%;
+            transform: rotate(24deg);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0));
+            transition: transform 600ms ease;
+            pointer-events: none;
         }
 
         .project-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(92, 204, 255, 0.55);
+            border-color: rgba(150, 176, 255, 0.66);
+        }
+
+        .project-card:hover::before {
+            transform: translateX(220%) rotate(24deg);
         }
 
         .project-card img {
@@ -406,6 +522,16 @@
             transform: translateY(0);
         }
 
+        .hero-left {
+            animation: slide-left 900ms ease both;
+            animation-delay: 220ms;
+        }
+
+        .hero-right {
+            animation: slide-right 900ms ease both;
+            animation-delay: 320ms;
+        }
+
         footer {
             margin: 34px 0 10px;
             text-align: center;
@@ -418,39 +544,77 @@
             text-decoration: none;
         }
 
-        @keyframes float {
+        @keyframes bob {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.76; }
-            50% { transform: scale(1.08); opacity: 1; }
+            0%, 100% { transform: scale(1); opacity: 0.74; }
+            50% { transform: scale(1.09); opacity: 1; }
         }
 
-        @keyframes glow-drift {
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes floor-wave {
+            0%, 100% { transform: scaleX(1); opacity: 0.5; }
+            50% { transform: scaleX(1.16); opacity: 0.85; }
+        }
+
+        @keyframes slide-left {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slide-right {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse-lights {
+            0%, 100% { opacity: 0.7; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-2%); }
+        }
+
+        @keyframes drift {
             0% { transform: translate(-2%, 0%); }
             100% { transform: translate(2%, 2%); }
         }
 
-        @media (max-width: 980px) {
-            .hero-grid,
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 6px;
+            }
+
+            .hero-text {
+                margin: 0 auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-contact {
+                align-items: center;
+            }
+
+            .hero-photo-wrap {
+                min-height: 280px;
+                order: -1;
+            }
+
             .skills-layout,
             .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero-photo-wrap {
-                min-height: 280px;
-            }
-
-            .hero-photo-wrap::before {
-                width: 260px;
-                height: 260px;
-            }
-
             .project-card img {
-                height: 210px;
+                height: 220px;
             }
         }
 
@@ -466,8 +630,18 @@
                 padding: 30px 16px;
             }
 
-            .hero-actions {
-                gap: 9px;
+            .hero-photo-wrap::before {
+                width: 240px;
+                height: 240px;
+            }
+
+            .hero-photo-wrap::after {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-photo {
+                width: min(280px, 94%);
             }
 
             .project-card img {
@@ -492,29 +666,38 @@
     </header>
 
     <section class="hero reveal" id="about" style="--delay: 80ms;">
-        <div class="hero-grid">
-            <div>
-                <p class="hero-kicker">Mobile Engineer</p>
-                <h1>Mustafa <span class="gradient-word">Gamal</span></h1>
-                <p>
-                    Flutter and Android developer focused on scalable mobile apps, clean architecture,
-                    and polished user experiences. I build production-ready apps from idea to release.
-                </p>
-
-                <div class="hero-actions">
-                    <a class="btn btn-primary" href="mailto:mustafagamalm2@gmail.com">Contact Me</a>
-                    <a class="btn btn-secondary" href="https://www.linkedin.com/in/MustafaGamalM/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a class="btn btn-secondary" href="https://github.com/MustafaGamalM" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div class="hero-motion" id="heroMotion">
+            <div class="hero-grid">
+                <div class="hero-side hero-left">
+                    <p class="hero-small">Hello, I am</p>
+                    <h1>Mustafa<br><span>Gamal</span></h1>
+                    <p class="hero-kicker">Mid Level Mobile Developer</p>
                 </div>
 
-                <div class="hero-contact" id="contact">
-                    <a href="tel:+201112891588">+20 111 289 1588</a>
-                    <a href="mailto:mustafagamalm2@gmail.com">mustafagamalm2@gmail.com</a>
+                <div class="hero-photo-wrap">
+                    <img class="hero-photo" src="assets/me-no-back.jpeg" alt="Mustafa Gamal portrait">
+                    <div class="photo-floor"></div>
                 </div>
-            </div>
 
-            <div class="hero-photo-wrap">
-                <img class="hero-photo" src="assets/me.jpeg" alt="Mustafa Gamal portrait">
+                <div class="hero-side hero-right">
+                    <p class="hero-small">Creative</p>
+                    <h2><span>Mobile Developer</span><br>& Problem Solver</h2>
+                    <p class="hero-text">
+                        I build scalable Flutter and Android apps with clean architecture,
+                        smooth UI, and production-ready delivery pipelines.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="mailto:mustafagamalm2@gmail.com">Contact Me</a>
+                        <a class="btn btn-secondary" href="https://www.linkedin.com/in/MustafaGamalM/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a class="btn btn-secondary" href="https://github.com/MustafaGamalM" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+
+                    <div class="hero-contact" id="contact">
+                        <a href="tel:+201112891588">+20 111 289 1588</a>
+                        <a href="mailto:mustafagamalm2@gmail.com">mustafagamalm2@gmail.com</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -526,9 +709,9 @@
                 <h3>Mashura Consultants - Mobile Developer</h3>
                 <div class="experience-time">Jan 2025 - Present</div>
                 <ul>
-                    <li>Built ERP and e-learning products with Flutter and robust API integrations.</li>
-                    <li>Improved app performance and delivery speed through clean architecture patterns.</li>
-                    <li>Collaborated with UI/UX and backend teams from planning to release.</li>
+                    <li>Developed ERP and e-learning mobile solutions using Flutter.</li>
+                    <li>Integrated REST APIs and optimized app performance.</li>
+                    <li>Collaborated with backend and UI/UX teams to deliver scalable applications.</li>
                 </ul>
             </article>
 
@@ -536,16 +719,24 @@
                 <h3>IMSHAH AI Applications - Mobile Developer</h3>
                 <div class="experience-time">Feb 2025 - Sep 2025</div>
                 <ul>
-                    <li>Delivered AI-driven mobile features and real-time interaction flows.</li>
-                    <li>Refined UX behaviors and fixed stability issues in production.</li>
+                    <li>Developed AI-powered mobile features and enhanced UX flows.</li>
+                    <li>Improved performance and stability across multiple releases.</li>
+                </ul>
+            </article>
+
+            <article class="experience-card">
+                <h3>Mashura Consultants - Mobile Developer</h3>
+                <div class="experience-time">Jun 2023 - Nov 2023</div>
+                <ul>
+                    <li>Implemented e-learning features and real-time user tracking.</li>
                 </ul>
             </article>
 
             <article class="experience-card">
                 <h3>WOW LLC - Mobile Developer</h3>
+                <div class="experience-time">Feb 2023 - Jun 2023</div>
                 <ul>
-                    <li>Resolved production bugs and improved UI responsiveness across devices.</li>
-                    <li>Supported releases and ongoing app maintenance.</li>
+                    <li>Fixed production issues and improved UI responsiveness.</li>
                 </ul>
             </article>
         </div>
@@ -656,6 +847,37 @@
     document.querySelectorAll(".reveal").forEach((element) => {
         observer.observe(element);
     });
+
+    const hero = document.getElementById("heroMotion");
+    if (hero) {
+        let rafId = null;
+
+        const reset = () => {
+            hero.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg)";
+            hero.style.setProperty("--mx", "50%");
+            hero.style.setProperty("--my", "40%");
+        };
+
+        hero.addEventListener("mousemove", (event) => {
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                const rect = hero.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                const px = (x / rect.width) * 100;
+                const py = (y / rect.height) * 100;
+                const rx = ((y / rect.height) - 0.5) * -5;
+                const ry = ((x / rect.width) - 0.5) * 7;
+
+                hero.style.transform = `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+                hero.style.setProperty("--mx", `${px}%`);
+                hero.style.setProperty("--my", `${py}%`);
+            });
+        });
+
+        hero.addEventListener("mouseleave", reset);
+        reset();
+    }
 </script>
 </body>
 </html>
