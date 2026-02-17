@@ -65,7 +65,8 @@
 
         .nav {
             margin-top: 20px;
-            padding: 16px 22px;
+            padding: 10px 14px 10px 16px;
+            min-height: 64px;
             border: 1px solid var(--line);
             border-radius: 999px;
             background: rgba(7, 10, 24, 0.72);
@@ -88,7 +89,8 @@
 
         .nav-links {
             display: flex;
-            gap: 16px;
+            align-items: center;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
@@ -98,28 +100,28 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
-            transition: color 180ms ease;
+            line-height: 1;
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
         }
 
         .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 100%;
-            height: 1.5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 220ms ease;
+            display: none;
         }
 
         .nav-links a:hover {
-            color: #d9ddff;
+            color: #e9ebff;
+            border-color: rgba(164, 150, 255, 0.45);
+            background: rgba(116, 124, 255, 0.14);
         }
 
-        .nav-links a:hover::after {
-            transform: scaleX(1);
+        .nav-links a.active {
+            color: #f4f5ff;
+            border-color: rgba(168, 158, 255, 0.55);
+            background: linear-gradient(120deg, rgba(154, 123, 255, 0.35), rgba(125, 197, 255, 0.22));
+            box-shadow: 0 0 0 1px rgba(180, 170, 255, 0.18);
         }
 
         .hero {
@@ -337,6 +339,12 @@
             background: var(--surface);
             box-shadow: var(--shadow);
             padding: 28px clamp(16px, 3.5vw, 30px);
+            scroll-margin-top: 110px;
+        }
+
+        .hero,
+        footer {
+            scroll-margin-top: 110px;
         }
 
         .section h2 {
@@ -649,6 +657,17 @@
                 flex-direction: column;
             }
 
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 6px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
             .hero-grid {
                 padding: 30px 16px;
             }
@@ -717,7 +736,7 @@
                         <a class="btn btn-secondary" href="https://github.com/MustafaGamalM" target="_blank" rel="noopener noreferrer">GitHub</a>
                     </div>
 
-                    <div class="hero-contact" id="contact">
+                    <div class="hero-contact">
                         <a href="tel:+201112891588">+20 111 289 1588</a>
                         <a href="mailto:mustafagamalm2@gmail.com">mustafagamalm2@gmail.com</a>
                     </div>
@@ -869,7 +888,7 @@
         </div>
     </section>
 
-    <footer class="reveal" style="--delay: 320ms;">
+    <footer class="reveal" id="contact" style="--delay: 320ms;">
         <p>
             <a href="https://www.linkedin.com/in/MustafaGamalM/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             |
@@ -893,6 +912,32 @@
     document.querySelectorAll(".reveal").forEach((element) => {
         observer.observe(element);
     });
+
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const sectionIds = ["about", "experience", "skills", "projects", "contact"];
+    const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+    const setActiveLink = (id) => {
+        navLinks.forEach((link) => {
+            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        });
+    };
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                setActiveLink(entry.target.id);
+            }
+        });
+    }, {
+        rootMargin: "-45% 0px -45% 0px",
+        threshold: 0
+    });
+
+    sections.forEach((section) => navObserver.observe(section));
+    setActiveLink("about");
 
     const hero = document.getElementById("heroMotion");
     if (hero) {
