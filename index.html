@@ -1,97 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mustafa Gamal | Flutter Developer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Mustafa Gamal | Flutter Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f172a;
-            color: #f1f5f9;
-            line-height: 1.6;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px 0;
-        }
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: #f8fafc;
+    line-height: 1.6;
+}
 
-        h1, h2, h3 {
-            color: #38bdf8;
-        }
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 0;
+}
 
-        a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
+h1, h2, h3 {
+    color: #38bdf8;
+}
 
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-        }
+.section {
+    margin-bottom: 80px;
+}
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
+.hero {
+    text-align: center;
+    padding: 100px 20px 60px;
+}
 
-        .hero p {
-            font-size: 20px;
-            opacity: 0.8;
-        }
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #38bdf8;
+    box-shadow: 0 0 35px rgba(56,189,248,0.6);
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
 
-        .section {
-            margin-bottom: 60px;
-        }
+.profile-img:hover {
+    transform: scale(1.05);
+}
 
-        .card {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+.hero h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
 
-        .skills span {
-            display: inline-block;
-            background: #334155;
-            padding: 8px 12px;
-            margin: 5px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
+.hero p {
+    font-size: 20px;
+    opacity: 0.85;
+}
 
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid #334155;
-            margin-top: 40px;
-            opacity: 0.7;
-        }
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #38bdf8;
+    color: #0f172a;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
 
-        .btn {
-            display: inline-block;
-            background: #38bdf8;
-            color: #0f172a;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+.btn:hover {
+    background: #0ea5e9;
+    transform: translateY(-3px);
+}
 
-        .btn:hover {
-            background: #0ea5e9;
-        }
-    </style>
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(56,189,248,0.3);
+}
+
+.skills span {
+    display: inline-block;
+    background: rgba(56,189,248,0.2);
+    padding: 8px 14px;
+    margin: 6px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 30px rgba(56,189,248,0.4);
+}
+
+.project-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 18px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    opacity: 0.7;
+}
+
+a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+</style>
 </head>
 
 <body>
 
 <div class="hero">
+    <img src="assets/me.jpeg" class="profile-img" alt="Mustafa Gamal">
     <h1>Mustafa Gamal</h1>
     <p>Flutter & Mobile Developer</p>
     <p>Cairo, Egypt</p>
@@ -103,42 +160,9 @@
     <div class="section">
         <h2>About Me</h2>
         <div class="card">
-            <p>
-                Mobile Developer with 2+ years of experience in Flutter and native Android.
-                Specialized in scalable architectures, real-time communication,
-                and high-performance mobile solutions.
-            </p>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Technical Experience</h2>
-
-        <div class="card">
-            <h3>Mashura Consultants – Mobile Developer</h3>
-            <p>Jan 2025 – Present</p>
-            <ul>
-                <li>Developed ERP and E-Learning mobile solutions using Flutter.</li>
-                <li>Integrated REST APIs and optimized performance.</li>
-                <li>Collaborated with backend & UI/UX teams.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>IMSHAH AI Applications – Mobile Developer</h3>
-            <p>Feb 2025 – Sep 2025</p>
-            <ul>
-                <li>Developed AI-powered mobile features.</li>
-                <li>Enhanced UX flows and performance stability.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>WOW LLC – Mobile Developer</h3>
-            <ul>
-                <li>Fixed production issues.</li>
-                <li>Improved UI responsiveness.</li>
-            </ul>
+            Mobile Developer with 2+ years of experience in Flutter and native Android.
+            Specialized in scalable architectures, real-time communication,
+            and high-performance mobile solutions.
         </div>
     </div>
 
@@ -149,58 +173,52 @@
             <span>Dart</span>
             <span>Kotlin</span>
             <span>Java</span>
-            <span>C++</span>
             <span>Clean Architecture</span>
-            <span>MVVM</span>
             <span>BLoC</span>
             <span>Riverpod</span>
             <span>REST APIs</span>
             <span>Firebase</span>
             <span>Git</span>
             <span>Docker</span>
-            <span>Fastlane</span>
         </div>
     </div>
 
     <div class="section">
         <h2>Projects</h2>
+        <div class="projects">
 
-        <div class="card">
-            <h3>Circle HR</h3>
-            <p>HR management app with attendance, payroll & workflows.</p>
-        </div>
+            <div class="project-card">
+                <img src="assets/hr.webp" alt="Circle HR">
+                <div class="project-content">
+                    <h3>Circle HR</h3>
+                    <p>HR management app with attendance, payroll & workflows.</p>
+                </div>
+            </div>
 
-        <div class="card">
-            <h3>Edu Gamer</h3>
-            <p>Gamified E-learning platform.</p>
-        </div>
+            <div class="project-card">
+                <img src="assets/edugamer.webp" alt="Edu Gamer">
+                <div class="project-content">
+                    <h3>Edu Gamer</h3>
+                    <p>Gamified E-learning platform.</p>
+                </div>
+            </div>
 
-        <div class="card">
-            <h3>Mozakrety</h3>
-            <p>Real-time E-learning platform.</p>
-        </div>
+            <div class="project-card">
+                <img src="assets/mozakrety.webp" alt="Mozakrety">
+                <div class="project-content">
+                    <h3>Mozakrety</h3>
+                    <p>Real-time E-learning platform.</p>
+                </div>
+            </div>
 
-        <div class="card">
-            <h3>Musafir</h3>
-            <p>Travel & limousine booking with real-time tracking.</p>
-        </div>
+            <div class="project-card">
+                <img src="assets/musafir.webp" alt="Musafir">
+                <div class="project-content">
+                    <h3>Musafir</h3>
+                    <p>Travel & limousine booking with real-time tracking.</p>
+                </div>
+            </div>
 
-    </div>
-
-    <div class="section">
-        <h2>Education</h2>
-        <div class="card">
-            <h3>Bachelor’s Degree in Information Systems</h3>
-            <p>Faculty of Computers and Information, Minia University</p>
-            <p>2019 – 2023</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Participations</h2>
-        <div class="card">
-            <h3>NASA Space Apps Challenge – Oct 2023</h3>
-            <p>48-hour global hackathon – mobile app prototypes.</p>
         </div>
     </div>
 
@@ -208,8 +226,8 @@
 
 <footer>
     <p>
-        <a href="https://github.com/MustafaGamalM">GitHub</a> |
-        <a href="https://linkedin.com/in/mustafagamalm">LinkedIn</a>
+        <a href="https://github.com/MustafaGamalM" target="_blank">GitHub</a> |
+        <a href="https://linkedin.com/in/mustafagamalm" target="_blank">LinkedIn</a>
     </p>
     <p>© 2026 Mustafa Gamal</p>
 </footer>
